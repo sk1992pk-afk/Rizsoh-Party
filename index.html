@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MR BOSS Web Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="phone">
+    <header class="topbar">
+      <div class="time">4:26</div>
+      <div class="brand">MR BOSS</div>
+      <div class="icons">◉ ︙</div>
+    </header>
+
+    <main id="screen"></main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-tab="home">Home</button>
+      <button class="nav-btn" data-tab="activity">Activity</button>
+      <button class="nav-btn" data-tab="game">Game</button>
+      <button class="nav-btn" data-tab="message">Message</button>
+      <button class="nav-btn" data-tab="me">Me</button>
+    </nav>
+  </div>
+
+  <template id="home-template">
+    <section class="banner hero">
+      <div class="sale">SALE • coin saler</div>
+      <h2>Luxury Voice Chat + Agency Platform</h2>
+      <p>Urdu + English + Arabic support • WhatsApp contact banner demo</p>
+    </section>
+
+    <h3 class="section-title">Events</h3>
+    <div class="carousel">
+      <div class="mini-card"><b>WORLD CUP</b><span>Play together & win</span></div>
+      <div class="mini-card"><b>MYSTERY BOX</b><span>Open & get gifts</span></div>
+      <div class="mini-card"><b>Recharge Reward</b><span>Bonus coins</span></div>
+      <div class="mini-card"><b>Daily Tasks</b><span>Earn diamonds</span></div>
+    </div>
+
+    <h3 class="section-title">Explore Live Rooms</h3>
+    <div class="grid">
+      <div class="room-card"><div class="cover"><span class="badge">LIVE</span><span class="viewers">1,280 watching</span></div><b>Party</b><small>MR BOSS Host</small></div>
+      <div class="room-card"><div class="cover purple"><span class="badge">SALE</span><span class="viewers">942 watching</span></div><b>BIG OFFER KHANO</b><small>Agency Queen</small></div>
+      <div class="room-card"><div class="cover pink"><span class="badge">HOT</span><span class="viewers">733 watching</span></div><b>LAMA SHIA</b><small>Golden Voice</small></div>
+      <div class="room-card"><div class="cover blue"><span class="badge">EVENT</span><span class="viewers">1,802 watching</span></div><b>King & Queen</b><small>Luxury Host</small></div>
+    </div>
+  </template>
+
+  <template id="activity-template">
+    <h3 class="section-title">Activity Center</h3>
+    <div class="list">
+      <div class="lux-card"><b>Daily Tasks</b><span>Finish missions to earn coins</span><button>Open</button></div>
+      <div class="lux-card"><b>Special ID</b><span>Unlock premium identity</span><button>Open</button></div>
+      <div class="lux-card"><b>Daily Challenge</b><span>Hit targets and win rewards</span><button>Open</button></div>
+      <div class="lux-card"><b>Lucky Player</b><span>Join lucky draws tonight</span><button>Open</button></div>
+    </div>
+  </template>
+
+  <template id="game-template">
+    <h3 class="section-title">Let's play together</h3>
+    <div class="chips"><span>WorldCup</span><span>Domino</span><span>Pool8</span></div>
+    <h3 class="section-title">Friend's Games</h3>
+    <div class="chips"><span>Ludo</span><span>Carrom</span><span>UNO</span><span>Baloott</span></div>
+    <h3 class="section-title">Hot Games</h3>
+    <div class="chips"><span>Fishing</span><span>HappyFish</span></div>
+  </template>
+
+  <template id="message-template">
+    <section class="banner">
+      <h2>Send / Get Gifts</h2>
+      <p>System notifications + activity alerts demo</p>
+    </section>
+    <div class="list">
+      <div class="chat-row"><b>System Notification</b><span>Welcome to MR BOSS</span><small>09:41</small></div>
+      <div class="chat-row"><b>Activity Notification</b><span>Daily task reward is ready</span><small>08:20</small></div>
+      <div class="chat-row"><b>Agency Team</b><span>Weekly target updated</span><small>Yesterday</small></div>
+    </div>
+  </template>
+
+  <template id="me-template">
+    <section class="profile-card">
+      <div class="avatar">MB</div>
+      <div>
+        <h2>MR BOSS User</h2>
+        <p>ID: 100200 • Followers 1.2k • Likes 3.8k</p>
+      </div>
+    </section>
+    <section class="banner">
+      <h2>GIFT CENTER FOR SHIPPING AGENTS</h2>
+      <p>AR / EN / UR demo profile banner</p>
+    </section>
+    <h3 class="section-title">Quick Cards</h3>
+    <div class="chips">
+      <span>Wallet 94</span><span>VIP</span><span>Level</span><span>Agency</span>
+      <span>Family</span><span>Mall</span><span>CP</span><span>Relation</span>
+    </div>
+    <h3 class="section-title">Manager Center</h3>
+    <div class="list">
+      <div class="lux-card"><b>Salary1 - Agency Opening</b><span>0/500,000 diamonds • T1 $5 • T2 $15 • T3 $30 • T4 $50</span><button>View</button></div>
+      <div class="lux-card"><b>Salary2 - Revenue Commission</b><span>This month $33.68 • All guild $329.2</span><button>View</button></div>
+      <div class="lux-card"><b>Current Salary</b><span>$153.68 = Base + Salary1 + Salary2 + Salary3</span><button>View</button></div>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
