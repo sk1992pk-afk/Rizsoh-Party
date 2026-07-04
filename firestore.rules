@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write for authenticated users
+    match /users/{uid=**} {
+      allow read: if request.auth.uid == uid || request.auth.uid != null;
+      allow write: if request.auth.uid == uid;
+      allow update: if request.auth.uid == uid || 
+                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superAdmin'];
+    }
+
+    // Rooms - anyone can read, hosts can write
+    match /rooms/{roomId} {
+      allow read: if request.auth.uid != null;
+      allow create: if request.auth.uid != null && 
+                       request.resource.data.hostId == request.auth.uid;
+      allow update: if request.auth.uid == resource.data.hostId ||
+                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superAdmin'];
+      allow delete: if request.auth.uid == resource.data.hostId ||
+                       get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'superAdmin';
+    }
+
+    // Transactions - users can read their own, admins can read all
+    match /transactions/{transactionId} {
+      allow read: if request.auth.uid == resource.data.userId ||
+                     get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superAdmin'];
+      allow write: if false; // Write via cloud functions
+    }
+
+    // Agencies - BDs and admins can read/write
+    match /agencies/{agencyId} {
+      allow read: if request.auth.uid != null;
+      allow write: if request.auth.uid == resource.data.bdId ||
+                      get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superAdmin'];
+    }
+
+    // Salaries - users can read their own, admins can read all
+    match /salaries/{salaryId} {
+      allow read: if request.auth.uid == resource.data.userId ||
+                     get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role in ['admin', 'superAdmin'];
+      allow write: if false; // Write via cloud functions
+    }
+
+    // Gifts - anyone can read
+    match /gifts/{giftId} {
+      allow read: if request.auth.uid != null;
+      allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'superAdmin';
+    }
+  }
+}
